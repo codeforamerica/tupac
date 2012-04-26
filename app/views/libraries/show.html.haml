@@ -1,0 +1,9 @@
+%p#notice= notice
+
+%p
+  %b Github repo:
+  = @library.github_repo
+
+= link_to 'Edit', edit_library_path(@library)
+\|
+= link_to 'Back', libraries_path
