@@ -4,6 +4,7 @@ gem 'rails', '3.2.3'
 
 gem 'acts-as-taggable-on', '~> 2.2.2'
 gem 'bootstrap-sass', '~> 2.0.2'
+gem 'devise'
 gem 'haml-rails'
 gem 'jquery-rails'
 gem 'octokit'
