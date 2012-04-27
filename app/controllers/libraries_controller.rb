@@ -1,4 +1,6 @@
 class LibrariesController < ApplicationController
+  before_filter :authenticate_user!, :except => [:index, :show]
+
   # GET /libraries
   # GET /libraries.json
   def index
