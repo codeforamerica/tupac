@@ -1,16 +1,36 @@
 # This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
+# The data can then be loaded with the rake db:seed (or newd alongside the db with db:setup).
 #
 # Examples:
 #
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
+#   cities = City.new([{ name: 'Chicago' }, { name: 'Copenhagen' }])
+#   Mayor.new(name: 'Emanuel', city: cities.first)
 unless Rails.env.production?
-  Library.create(:github_repo => 'cfahelloworld')
-  Library.create(:github_repo => 'fcc_reboot')
-  Library.create(:github_repo => 'seeclickfix_rb')
-  Library.create(:github_repo => 'FCC-Python-Egg')
-  Library.create(:github_repo => 'usa_spending_python')
-  Library.create(:github_repo => 'rxNorm_php')
-  Library.create(:github_repo => 'faa_php')
+  @library = Library.new(:github_repo => 'cfahelloworld')
+  @library.language_list = 'Ruby'
+  @library.save
+
+  @library = Library.new(:github_repo => 'fcc_reboot')
+  @library.language_list = 'Ruby'
+  @library.save
+
+  @library =Library.new(:github_repo => 'seeclickfix_rb')
+  @library.language_list = 'Ruby'
+  @library.save
+
+  @library = Library.new(:github_repo => 'FCC-Python-Egg')
+  @library.language_list = 'Python'
+  @library.save
+
+  @library = Library.new(:github_repo => 'usa_spending_python')
+  @library.language_list = 'Python'
+  @library.save
+
+  @library = Library.new(:github_repo => 'rxNorm_php')
+  @library.language_list = 'PHP'
+  @library.save
+
+  @library = Library.new(:github_repo => 'faa_php')
+  @library.language_list = 'PHP'
+  @library.save
 end
