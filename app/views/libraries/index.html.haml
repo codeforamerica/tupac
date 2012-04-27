@@ -4,6 +4,7 @@
   %tr
     %th Wrapper Name
     %th Description
+    %th Language
     %th
     %th
     %th
@@ -12,6 +13,7 @@
     %tr
       %td= library.github_repo
       %td= library.get_repo(library.github_repo).description
+      %td= library.language_list
       %td= link_to 'Show', library
       %td= link_to 'Edit', edit_library_path(library)
       %td= link_to 'Destroy', library, :confirm => 'Are you sure?', :method => :delete
