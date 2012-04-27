@@ -25,5 +25,6 @@ group :production do
 end
 
 group :test do
+  gem 'simplecov'
   gem 'webmock'
 end
