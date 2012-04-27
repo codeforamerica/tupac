@@ -1,6 +1,10 @@
 class Library < ActiveRecord::Base
   attr_accessible :github_repo
 
+  def get_repo(repo)
+    octokit_client.repository("codeforamerica/#{repo}")
+  end
+
   protected
 
   def octokit_client
