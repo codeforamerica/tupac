@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.3'
 
+gem 'acts-as-taggable-on', '~> 2.2.2'
 gem 'haml-rails'
 gem 'jquery-rails'
 gem 'octokit'
