@@ -24,6 +24,7 @@
   %b Last Update:
   = @octo.updated_at
 
-= link_to 'Edit', edit_library_path(@library)
+- if user_signed_in?
+  = link_to 'Edit', edit_library_path(@library)
 \|
 = link_to 'Back', libraries_path

@@ -15,9 +15,11 @@
       %td= library.get_repo(library.github_repo).description
       %td= library.language_list
       %td= link_to 'Show', library
-      %td= link_to 'Edit', edit_library_path(library)
-      %td= link_to 'Destroy', library, :confirm => 'Are you sure?', :method => :delete
+      - if user_signed_in?
+        %td= link_to 'Edit', edit_library_path(library)
+        %td= link_to 'Destroy', library, :confirm => 'Are you sure?', :method => :delete
 
 %br
 
-= link_to 'New Library', new_library_path
+- if user_signed_in?
+  = link_to 'New Library', new_library_path
