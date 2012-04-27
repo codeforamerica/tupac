@@ -1,5 +1,7 @@
 class Library < ActiveRecord::Base
-  attr_accessible :github_repo
+  attr_accessible :github_repo, :language
+  acts_as_taggable
+  acts_as_taggable_on :languages
 
   def get_repo(repo)
     octokit_client.repository("codeforamerica/#{repo}")
