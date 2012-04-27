@@ -26,7 +26,7 @@ describe LibrariesController do
   def valid_attributes
     {}
   end
-  
+
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
   # LibrariesController. Be sure to keep this updated too.
@@ -43,6 +43,11 @@ describe LibrariesController do
   end
 
   describe "GET show" do
+    before do
+      stub_request(:get, "https://api.github.com/repos/codeforamerica/").
+        to_return(:status => 200, :body => "", :headers => {})
+    end
+
     it "assigns the requested library as @library" do
       library = Library.create! valid_attributes
       get :show, {:id => library.to_param}, valid_session
