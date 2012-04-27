@@ -4,53 +4,42 @@ describe LibrariesController do
 
   login_user
 
-  # This should return the minimal set of attributes required to create a valid
-  # Library. As you add validations to Library, be sure to
-  # update the return value of this method accordingly.
-  def valid_attributes
-    {}
+  before(:each) do
+    @library = Factory(:library)
+
   end
 
-  # This should return the minimal set of values that should be in the session
-  # in order to pass any filters (e.g. authentication) defined in
-  # LibrariesController. Be sure to keep this updated too.
-  def valid_session
-    {}
-  end
 
   describe "GET index" do
     it "assigns all libraries as @libraries" do
-      library = Library.create! valid_attributes
-      get :index, {}, valid_session
-      assigns(:libraries).should eq([library])
+      get :index
+      assigns(:libraries).should eq([@library])
     end
   end
 
   describe "GET show" do
     before do
-      stub_request(:get, "https://api.github.com/repos/codeforamerica/").
+      stub_request(:get, "https://api.github.com/repos/codeforamerica/cfahelloworld").
         to_return(:status => 200, :body => "", :headers => {})
     end
 
     it "assigns the requested library as @library" do
-      library = Library.create! valid_attributes
-      get :show, {:id => library.to_param}, valid_session
-      assigns(:library).should eq(library)
+      get :show, {:id => @library.to_param}
+      assigns(:library).should eq(@library)
     end
   end
 
   describe "GET new" do
     it "assigns a new library as @library" do
-      get :new, {}, valid_session
+      get :new
       assigns(:library).should be_a_new(Library)
     end
   end
 
   describe "GET edit" do
     it "assigns the requested library as @library" do
-      library = Library.create! valid_attributes
-      get :edit, {:id => library.to_param}, valid_session
-      assigns(:library).should eq(library)
+      get :edit, {:id => @library.to_param}
+      assigns(:library).should eq(@library)
     end
   end
 
@@ -58,18 +47,18 @@ describe LibrariesController do
     describe "with valid params" do
       it "creates a new Library" do
         expect {
-          post :create, {:library => valid_attributes}, valid_session
+          post :create, {:library => FactoryGirl.attributes_for(:library)}
         }.to change(Library, :count).by(1)
       end
 
       it "assigns a newly created library as @library" do
-        post :create, {:library => valid_attributes}, valid_session
+        post :create, {:library => FactoryGirl.attributes_for(:library)}
         assigns(:library).should be_a(Library)
         assigns(:library).should be_persisted
       end
 
       it "redirects to the created library" do
-        post :create, {:library => valid_attributes}, valid_session
+        post :create, {:library => FactoryGirl.attributes_for(:library)}
         response.should redirect_to(Library.last)
       end
     end
@@ -78,14 +67,14 @@ describe LibrariesController do
       it "assigns a newly created but unsaved library as @library" do
         # Trigger the behavior that occurs when invalid params are submitted
         Library.any_instance.stub(:save).and_return(false)
-        post :create, {:library => {}}, valid_session
+        post :create, {:library => {}}
         assigns(:library).should be_a_new(Library)
       end
 
       it "re-renders the 'new' template" do
         # Trigger the behavior that occurs when invalid params are submitted
         Library.any_instance.stub(:save).and_return(false)
-        post :create, {:library => {}}, valid_session
+        post :create, {:library => {}}
         response.should render_template("new")
       end
     end
@@ -94,42 +83,37 @@ describe LibrariesController do
   describe "PUT update" do
     describe "with valid params" do
       it "updates the requested library" do
-        library = Library.create! valid_attributes
         # Assuming there are no other libraries in the database, this
         # specifies that the Library created on the previous line
         # receives the :update_attributes message with whatever params are
         # submitted in the request.
         Library.any_instance.should_receive(:update_attributes).with({'these' => 'params'})
-        put :update, {:id => library.to_param, :library => {'these' => 'params'}}, valid_session
+        put :update, {:id => @library.to_param, :library => {'these' => 'params'}}
       end
 
       it "assigns the requested library as @library" do
-        library = Library.create! valid_attributes
-        put :update, {:id => library.to_param, :library => valid_attributes}, valid_session
-        assigns(:library).should eq(library)
+        put :update, {:id => @library.to_param, :library => FactoryGirl.attributes_for(:library)}
+        assigns(:library).should eq(@library)
       end
 
       it "redirects to the library" do
-        library = Library.create! valid_attributes
-        put :update, {:id => library.to_param, :library => valid_attributes}, valid_session
-        response.should redirect_to(library)
+        put :update, {:id => @library.to_param, :library => FactoryGirl.attributes_for(:library)}
+        response.should redirect_to(@library)
       end
     end
 
     describe "with invalid params" do
       it "assigns the library as @library" do
-        library = Library.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
         Library.any_instance.stub(:save).and_return(false)
-        put :update, {:id => library.to_param, :library => {}}, valid_session
-        assigns(:library).should eq(library)
+        put :update, {:id => @library.to_param, :library => {}}
+        assigns(:library).should eq(@library)
       end
 
       it "re-renders the 'edit' template" do
-        library = Library.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
         Library.any_instance.stub(:save).and_return(false)
-        put :update, {:id => library.to_param, :library => {}}, valid_session
+        put :update, {:id => @library.to_param, :library => {}}
         response.should render_template("edit")
       end
     end
@@ -137,15 +121,13 @@ describe LibrariesController do
 
   describe "DELETE destroy" do
     it "destroys the requested library" do
-      library = Library.create! valid_attributes
       expect {
-        delete :destroy, {:id => library.to_param}, valid_session
+        delete :destroy, {:id => @library.to_param}
       }.to change(Library, :count).by(-1)
     end
 
     it "redirects to the libraries list" do
-      library = Library.create! valid_attributes
-      delete :destroy, {:id => library.to_param}, valid_session
+      delete :destroy, {:id => @library.to_param}
       response.should redirect_to(libraries_url)
     end
   end

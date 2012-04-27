@@ -2,6 +2,7 @@
 
 FactoryGirl.define do
   factory :library do
-    github_repo "MyString"
+    github_repo "cfahelloworld"
+    language_list "Ruby"
   end
 end
