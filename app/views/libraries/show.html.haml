@@ -1,8 +1,28 @@
 %p#notice= notice
 
 %p
-  %b Github repo:
-  = @library.github_repo
+  %b Library Name:
+  = @octo.name
+%p
+  %b Description:
+  = @octo.description
+%p
+  %b Language:
+  = @octo.language
+%p
+  %b Watchers:
+  = @octo.watchers
+%p
+  %b Forks:
+  = @octo.forks
+
+%p
+  %b Github URL:
+  = @octo.html_url
+
+%p
+  %b Last Update:
+  = @octo.updated_at
 
 = link_to 'Edit', edit_library_path(@library)
 \|
