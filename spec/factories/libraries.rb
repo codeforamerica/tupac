@@ -4,5 +4,6 @@ FactoryGirl.define do
   factory :library do
     github_repo "cfahelloworld"
     language_list "Ruby"
+    description "Tupac wrapping to an API"
   end
 end
