@@ -1,5 +1,5 @@
 class Library < ActiveRecord::Base
-  attr_accessible :github_repo, :language_list
+  attr_accessible :github_repo, :language_list, :description
   acts_as_taggable
   acts_as_taggable_on :languages
 
