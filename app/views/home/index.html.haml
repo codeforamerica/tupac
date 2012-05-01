@@ -13,6 +13,12 @@
   .span4
     %h2 Language Break Down
     %ul
-      %li Ruby 10
-      %li Python 10
-      %li PHP
+      %li
+        Ruby
+        = get_count('ruby')
+      %li
+        PHP
+        = get_count('php')
+      %li
+        Python
+        = get_count('python')
