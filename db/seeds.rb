@@ -33,4 +33,6 @@ unless Rails.env.production?
   @library = Library.new(:github_repo => 'faa_php')
   @library.language_list = 'PHP'
   @library.save
+
+  User.create(:email => "email@test.com", :password => "123456")
 end
