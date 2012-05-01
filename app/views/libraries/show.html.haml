@@ -1,7 +1,4 @@
-%p#notice= notice
-
-%p
-  %b Library Name:
+%h1
   = @octo.name
 %p
   %b Description:
@@ -15,11 +12,9 @@
 %p
   %b Forks:
   = @octo.forks
-
 %p
   %b Github URL:
   = link_to @octo.html_url, @octo.html_url
-
 %p
   %b Last Update:
   = @octo.updated_at
