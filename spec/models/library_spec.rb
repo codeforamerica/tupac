@@ -12,5 +12,10 @@ describe Library do
       result = library.get_repo("cfahelloworld")
       result.description.should == "Hello World Training"
     end
+
+    it "should add the description from Github" do
+      library = FactoryGirl.create(:library, :description => '')
+      library.description.should == "Hello World Training"
+    end
   end
 end
