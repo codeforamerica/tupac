@@ -4,7 +4,12 @@ class LibrariesController < ApplicationController
   # GET /libraries
   # GET /libraries.json
   def index
-    @libraries = Library.all
+
+    if params[:language].nil?
+      @libraries = Library.all
+    else
+      @libraries = Library.tagged_with(params[:language])
+    end
 
     respond_to do |format|
       format.html # index.html.erb

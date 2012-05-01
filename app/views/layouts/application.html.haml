@@ -22,6 +22,14 @@
                   = link_to 'Home', root_path
                 %li
                   = link_to 'Libraries', libraries_path
+                %li
+                  = link_to 'Ruby', libraries_path(:language => 'Ruby')
+                %li
+                  = link_to 'PHP', libraries_path(:language => 'PHP')
+                %li
+                  = link_to 'Python', libraries_path(:language => 'Python')
+
+
     = render :partial => "layouts/flash", :locals => {:flash => flash}
     .container
       = yield
