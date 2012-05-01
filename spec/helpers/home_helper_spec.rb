@@ -1,15 +1,20 @@
 require 'spec_helper'
 
-# Specs in this file have access to a helper object that includes
-# the HomeHelper. For example:
-#
-# describe HomeHelper do
-#   describe "string concat" do
-#     it "concats two strings with spaces" do
-#       helper.concat_strings("this","that").should == "this that"
-#     end
-#   end
-# end
 describe HomeHelper do
-  pending "add some examples to (or delete) #{__FILE__}"
+  before do
+    stub_request(:get, "https://api.github.com/repos/codeforamerica/cfahelloworld").
+      to_return(:status => 200, :body => fixture("repo.json"), :headers => {})
+
+    @library = FactoryGirl.create(:library)
+    @library.language_list = 'Ruby'
+    @library.save
+  end
+
+  describe "#get_count" do
+    it "should return the language count" do
+      test = get_count('ruby')
+      test.should == 1
+    end
+  end
+
 end
