@@ -28,3 +28,5 @@
   %script{:src => "http://dthompson.github.com/cfa_banner/banner.js?type=flag", :id => "cfa_banner_script"}
   %footer
     Code for America
+    - if user_signed_in?
+      = link_to('Logout', destroy_user_session_path, :method => :delete)
