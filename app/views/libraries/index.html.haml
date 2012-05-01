@@ -12,7 +12,7 @@
   - @libraries.each do |library|
     %tr
       %td= library.github_repo
-      %td= library.get_repo(library.github_repo).description
+      %td= library.description
       %td= library.language_list
       %td= link_to 'Show', library
       - if user_signed_in?
