@@ -5,10 +5,10 @@ describe LibrariesController do
   login_user
 
   before(:each) do
-    @library = Factory(:library)
-
+    stub_request(:get, "https://api.github.com/repos/codeforamerica/cfahelloworld").
+      to_return(:status => 200, :body => fixture("repo.json"), :headers => {})
+    @library = FactoryGirl.create(:library)
   end
-
 
   describe "GET index" do
     it "assigns all libraries as @libraries" do
@@ -18,11 +18,6 @@ describe LibrariesController do
   end
 
   describe "GET show" do
-    before do
-      stub_request(:get, "https://api.github.com/repos/codeforamerica/cfahelloworld").
-        to_return(:status => 200, :body => "", :headers => {})
-    end
-
     it "assigns the requested library as @library" do
       get :show, {:id => @library.to_param}
       assigns(:library).should eq(@library)
