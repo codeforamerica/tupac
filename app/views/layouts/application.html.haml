@@ -22,6 +22,7 @@
                   = link_to 'Home', root_path
                 %li
                   = link_to 'Libraries', libraries_path
+    = render :partial => "layouts/flash", :locals => {:flash => flash}
     .container
       = yield
   %script{:src => "http://dthompson.github.com/cfa_banner/banner.js?type=flag", :id => "cfa_banner_script"}
