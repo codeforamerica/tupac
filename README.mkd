@@ -13,9 +13,9 @@ A Ruby on Rails application for displaying the various Code for America Wrappers
 
 ## <a name="demo"></a>Demo
 You can see a running version of the application at
-[http://tupac.herokuapp.com/][demo].
+[http://wrappers.codeforamerica.org/][demo].
 
-[demo]: http://tupac.herokuapp.com/
+[demo]: http://wrappers.codeforamerica.org/
 
 ## <a name="installation"></a>Installation
     git clone git://github.com/codeforamerica/tupac.git
